@@ -75,6 +75,19 @@ public class BinaryTree<E> {
         }
     }
 
+    public void inorder (BinaryTree raiz){
+        evaluarInorder(raiz);
+    }
+
+    public void evaluarInorder(BinaryTree nodo){
+        if (nodo.val==null){
+            return;
+        }
+        evaluarInorder(nodo.left);
+        System.out.println(nodo.val);
+        evaluarInorder(nodo.right);
+        return;
+    }
     /**public Iterator<E> iterator(){
 
     }**/
