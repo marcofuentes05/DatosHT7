@@ -60,11 +60,23 @@ public class Main {
             e.printStackTrace();
             System.out.println("No se encontro el archivo");
         }
+        System.out.println("Los valores del diccionario son (en inOrder): \n");
         System.out.println(diccionario.inorder(diccionario));
 
-        //System.out.println(diccionario.buscar("house"));
-        String archivoPrueba = "diccionario.txt";
-        String cadena0;
+        try{
+            String sCadena;
+            BufferedReader bf = new BufferedReader(new FileReader("texto.txt"));
+            while ((sCadena = bf.readLine())!=null) {
+                System.out.println("La oracion original es: \n"+sCadena);
+                System.out.println("\nLa oracion traducida es: ");
+                String[] splt = sCadena.split(" ");
+                for (int i = 0; i<splt.length;i++){
+                    System.out.print(diccionario.buscar(splt[i])+" ");
+                }
+            }
+        }catch(Exception e){
+
+        }
 
 
     }

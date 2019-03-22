@@ -1,3 +1,5 @@
+import com.sun.javafx.binding.SelectBinding;
+
 import java.util.Iterator;
 
 public class BinaryTree<E> {
@@ -84,7 +86,7 @@ public class BinaryTree<E> {
             return "";
         }
         t+= evaluarInorder(nodo.left);
-        t+= nodo.val.toString()+";";//System.out.println(nodo.val);
+        t+= nodo.val.toString()+"\n";
         t+=evaluarInorder(nodo.right);
         return t;
     }
@@ -114,21 +116,23 @@ public class BinaryTree<E> {
     }
 
     public String buscar(String a){
-        String arbolito = "";
-
-        if (!isEmpty()) {
-            if (a == val) {
-                return val.toString();
-            }
-            else {
-                if (a.compareTo(val.toString())<0){
-                    arbolito = left.buscar(a);
-                }
-                else {
-                    arbolito = right.buscar(a);
-                }
-            }
+        String str = "";
+        BinaryTree arbolito = this;
+        if (arbolito.val == null){
+            return str = "*"+a+"*";
         }
-        return arbolito;
+        if(((Association)arbolito.val).getKey().toString().equals(a)){
+            return (((Association) arbolito.val).getValue()).toString();
+        }
+        if((((Association) arbolito.val).getKey().toString().compareToIgnoreCase(a)>0)){
+            //usa left
+            arbolito = arbolito.left;
+            str = arbolito.buscar(a);
+        }else if((((Association) arbolito.val).getKey().toString().compareToIgnoreCase(a)<0)){
+            //usa right
+            arbolito = arbolito.right;
+            str = arbolito.buscar(a);
+        }
+        return str;
     }
 }
