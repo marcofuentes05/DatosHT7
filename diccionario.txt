@@ -4,7 +4,3 @@
 (woman,mujer)
 (town,pueblo)
 (yes,si)
-(city,ciudad)
-(frame,marco)
-(door,puerta)
-(five,cinco)

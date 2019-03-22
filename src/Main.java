@@ -60,6 +60,12 @@ public class Main {
             e.printStackTrace();
             System.out.println("No se encontro el archivo");
         }
-        diccionario.inorder(diccionario);
+        System.out.println(diccionario.inorder(diccionario));
+
+        //System.out.println(diccionario.buscar("house"));
+        String archivoPrueba = "diccionario.txt";
+        String cadena0;
+
+
     }
 }

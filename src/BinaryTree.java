@@ -5,7 +5,6 @@ public class BinaryTree<E> {
     protected E val; // value associated with node
     protected BinaryTree<E> parent; // parent of node
     protected BinaryTree<E> left, right; // children of node
-
     public BinaryTree()
     // post: constructor that generates an empty node
     {
@@ -75,18 +74,19 @@ public class BinaryTree<E> {
         }
     }
 
-    public void inorder (BinaryTree raiz){
-        evaluarInorder(raiz);
+    public String inorder (BinaryTree raiz){
+        return evaluarInorder(raiz);
     }
 
-    public void evaluarInorder(BinaryTree nodo){
+    public String evaluarInorder(BinaryTree nodo){
+        String t = "";
         if (nodo.val==null){
-            return;
+            return "";
         }
-        evaluarInorder(nodo.left);
-        System.out.println(nodo.val);
-        evaluarInorder(nodo.right);
-        return;
+        t+= evaluarInorder(nodo.left);
+        t+= nodo.val.toString()+";";//System.out.println(nodo.val);
+        t+=evaluarInorder(nodo.right);
+        return t;
     }
     /**public Iterator<E> iterator(){
 
@@ -111,5 +111,24 @@ public class BinaryTree<E> {
     }
     public boolean isEmpty(){
         return val==null&&left==null && right==null;
+    }
+
+    public String buscar(String a){
+        String arbolito = "";
+
+        if (!isEmpty()) {
+            if (a == val) {
+                return val.toString();
+            }
+            else {
+                if (a.compareTo(val.toString())<0){
+                    arbolito = left.buscar(a);
+                }
+                else {
+                    arbolito = right.buscar(a);
+                }
+            }
+        }
+        return arbolito;
     }
 }
